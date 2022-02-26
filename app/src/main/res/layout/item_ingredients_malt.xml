@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="malt"
+            type="com.app.domain.Malt" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/common_dimen_16"
+                android:fontFamily="@font/autour_one"
+                android:gravity="center"
+                android:text="@{malt.name}"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Propino Pale Malt" />
+
+            <ProgressBar
+                android:id="@+id/ratingProgressbarItemBeer"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="end"
+                android:layout_marginTop="@dimen/common_dimen_default"
+                android:maltProgressBar="@{malt}"
+                android:indeterminate="false"
+                android:max="20"
+                android:progressDrawable="@drawable/circular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:progress="5" />
+
+            <TextView
+                android:id="@+id/tvItemBeer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maltText="@{malt}"
+                android:fontFamily="@font/autour_one"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingProgressbarItemBeer"
+                app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemBeer"
+                app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemBeer"
+                app:layout_constraintTop_toTopOf="@+id/ratingProgressbarItemBeer"
+                tools:text="7.5" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/autour_one"
+                android:gravity="center"
+                android:text="@{malt.amount.unit}"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ratingProgressbarItemBeer"
+                tools:text="Kilogramos" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

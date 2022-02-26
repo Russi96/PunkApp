@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PunkApp</string>
+    <string name="app_name_title">Welcome to PunkApp</string>
+    <string name="main_screen_browser">Find your favorite beer</string>
+    <string name="abv">abv</string>
+    <string name="features">Features</string>
+    <string name="ibu">ibu</string>
+    <string name="ph">ph</string>
+    <string name="ebc">ebc</string>
+    <string name="fermentation">Fermentation</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="return_home">returnHome</string>
+</resources>

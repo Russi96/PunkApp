@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="beerItem"
+            type="com.app.domain.BeerItem" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.fragments.DetailsFragment">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/return_home"
+            android:elevation="20dp"
+            android:layout_marginTop="@dimen/common_dimen_32"
+            android:return="@{beerItem}"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nestedScrollView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivBeerImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@{beerItem.name}"
+                android:src="@drawable/logo"
+                android:translationX="-100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/common_dimen_16"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/constraintLayout">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dimen_32"
+                    android:fontFamily="@font/autour_one"
+                    android:gravity="center"
+                    android:text="@{beerItem.name}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_size_32"
+                    tools:text="Corona" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dimen_16"
+                    android:gravity="center"
+                    android:text="@{beerItem.description}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_size_16" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dimen_32"
+                    android:fontFamily="@font/autour_one"
+                    android:gravity="center"
+                    android:text="@string/features"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_size_20" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dimen_16">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constrainLayoutAbv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:elevation="10dp"
+                        app:layout_constraintEnd_toStartOf="@+id/constrainLayoutIbu"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ProgressBar
+                            android:id="@+id/ratingProgressbarItemAbvBeer"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="end"
+                            android:abvProgressBar="@{beerItem}"
+                            android:indeterminate="false"
+                            android:max="20"
+                            android:progressDrawable="@drawable/circular"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:progress="5" />
+
+                        <TextView
+                            android:id="@+id/tvAbvItemBeer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:abvText="@{beerItem}"
+                            android:fontFamily="@font/autour_one"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/ratingProgressbarItemAbvBeer"
+                            app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemAbvBeer"
+                            app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemAbvBeer"
+                            app:layout_constraintTop_toTopOf="@+id/ratingProgressbarItemAbvBeer"
+                            tools:text="7.5" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/autour_one"
+                            android:gravity="center"
+                            android:text="@string/abv"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemAbvBeer"
+                            app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemAbvBeer"
+                            app:layout_constraintTop_toBottomOf="@+id/ratingProgressbarItemAbvBeer" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constrainLayoutIbu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:elevation="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/constrainLayoutAbv"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ProgressBar
+                            android:id="@+id/ratingProgressbarItemIbuBeer"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="end"
+                            android:ibuProgressBar="@{beerItem}"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/circular"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:progress="5" />
+
+                        <TextView
+                            android:id="@+id/tvIbuItemBeer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/autour_one"
+                            android:ibuText="@{beerItem}"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/ratingProgressbarItemIbuBeer"
+                            app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemIbuBeer"
+                            app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemIbuBeer"
+                            app:layout_constraintTop_toTopOf="@+id/ratingProgressbarItemIbuBeer"
+                            tools:text="7.5" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/autour_one"
+                            android:gravity="center"
+                            android:text="@string/ibu"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemIbuBeer"
+                            app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemIbuBeer"
+                            app:layout_constraintTop_toBottomOf="@+id/ratingProgressbarItemIbuBeer" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constrainLayoutPh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/common_dimen_18"
+                        android:elevation="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/constrainLayoutIbu"
+                        app:layout_constraintStart_toStartOf="@+id/constrainLayoutIbu"
+                        app:layout_constraintTop_toBottomOf="@+id/constrainLayoutIbu">
+
+                        <ProgressBar
+                            android:id="@+id/ratingProgressbarItemPhBeer"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="end"
+                            android:indeterminate="false"
+                            android:max="20"
+                            android:phProgressBar="@{beerItem}"
+                            android:progressDrawable="@drawable/circular"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:progress="5" />
+
+                        <TextView
+                            android:id="@+id/tvPhItemBeer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/autour_one"
+                            android:phText="@{beerItem}"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/ratingProgressbarItemPhBeer"
+                            app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemPhBeer"
+                            app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemPhBeer"
+                            app:layout_constraintTop_toTopOf="@+id/ratingProgressbarItemPhBeer"
+                            tools:text="7.5" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/autour_one"
+                            android:gravity="center"
+                            android:text="@string/ph"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemPhBeer"
+                            app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemPhBeer"
+                            app:layout_constraintTop_toBottomOf="@+id/ratingProgressbarItemPhBeer" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constrainLayoutEbc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="@dimen/common_dimen_18"
+                        android:elevation="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/constrainLayoutAbv"
+                        app:layout_constraintStart_toStartOf="@+id/constrainLayoutAbv"
+                        app:layout_constraintTop_toBottomOf="@+id/constrainLayoutIbu">
+
+                        <ProgressBar
+                            android:id="@+id/ratingProgressbarItemEbcBeer"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="end"
+                            android:ebcProgressBar="@{beerItem}"
+                            android:indeterminate="false"
+                            android:max="20"
+                            android:progressDrawable="@drawable/circular"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:progress="5" />
+
+                        <TextView
+                            android:id="@+id/tvEbcItemBeer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ebcText="@{beerItem}"
+                            android:fontFamily="@font/autour_one"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/ratingProgressbarItemEbcBeer"
+                            app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemEbcBeer"
+                            app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemEbcBeer"
+                            app:layout_constraintTop_toTopOf="@+id/ratingProgressbarItemEbcBeer"
+                            tools:text="7.5" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/autour_one"
+                            android:gravity="center"
+                            android:text="@string/ebc"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemEbcBeer"
+                            app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemEbcBeer"
+                            app:layout_constraintTop_toBottomOf="@+id/ratingProgressbarItemEbcBeer" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dimen_32"
+                    android:fontFamily="@font/autour_one"
+                    android:gravity="center"
+                    android:text="@string/fermentation"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_size_20" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/common_dimen_default"
+                    android:elevation="10dp"
+                    app:layout_constraintEnd_toStartOf="@+id/constrainLayoutIbu"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ProgressBar
+                        android:id="@+id/ratingProgressbarItemFermentationBeer"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end"
+                        android:fermentationProgressBar="@{beerItem}"
+                        android:indeterminate="false"
+                        android:max="20"
+                        android:progressDrawable="@drawable/circular"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:progress="5" />
+
+                    <TextView
+                        android:id="@+id/tvFermentationItemBeer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fermentationText="@{beerItem}"
+                        android:fontFamily="@font/autour_one"
+                        android:textColor="@color/black"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ratingProgressbarItemFermentationBeer"
+                        app:layout_constraintEnd_toEndOf="@+id/ratingProgressbarItemFermentationBeer"
+                        app:layout_constraintStart_toStartOf="@+id/ratingProgressbarItemFermentationBeer"
+                        app:layout_constraintTop_toTopOf="@+id/ratingProgressbarItemFermentationBeer"
+                        tools:text="7.5" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/autour_one"
+                        android:gravity="center"
+                        android:text="@{beerItem.method.fermentation.temp.unit}"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ratingProgressbarItemFermentationBeer" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_dimen_32"
+                    android:fontFamily="@font/autour_one"
+                    android:gravity="center"
+                    android:text="@string/ingredients"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/common_size_20" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvListBeerMaltFragmentDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/common_dimen_16"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/svSearchBeerFragmentBeers"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/svSearchBeerFragmentBeers"
+                    app:layout_constraintTop_toBottomOf="@+id/svSearchBeerFragmentBeers"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:spanCount="2"
+                    tools:listitem="@layout/item_ingredients_malt" />
+
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
